@@ -1,0 +1,20 @@
+{
+    "name": "Just the facts",
+    "version": "0.0",
+    "page_action": {
+        "default_icon": {
+            "38": "img/icon38.png"
+        },
+        "default_title": "Just the facts",
+        "default_popup": "popup.html"
+    },
+    "content_scripts": [
+        {
+            "css": ["highlight.css"],
+            "matches": ["*://*/*"],
+            "run_at": "document_end",
+            "js": ["lib/jquery-2.0.3.min.js", "highlight.js"]
+        }
+    ],
+    "manifest_version": 2
+}
