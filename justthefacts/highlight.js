@@ -31,7 +31,7 @@
     }
 
     function markNames(str) {
-        str = markPatternAsClass(str, /(?:[A-Z][A-Za-z\.]+)(?:\s[A-Z][A-Za-z\.]+){1,2}/g, 'name');
+        str = markPatternAsClass(str, /(?:[A-Z][A-Za-z\.]+)(?:\s[A-Z][A-Za-z\.]+)+/g, 'name');
         return str;
     }
 
