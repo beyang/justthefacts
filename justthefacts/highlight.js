@@ -50,7 +50,7 @@
     }
 
     function highlightedBody(bodyHTML) {
-        return bodyHTML.replace(/<[Pp][^>]*>[^]+<\/[Pp]>/g, replaceTagInnerHTML);
+        return bodyHTML.replace(/<[Pp][^>]*>[^]+?<\/[Pp]>/g, replaceTagInnerHTML);
     }
 
     function main() {
