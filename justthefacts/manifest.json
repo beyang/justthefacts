@@ -2,19 +2,19 @@
     "name": "Just the facts",
     "version": "0.0",
     "page_action": {
-        "default_icon": {
-            "38": "img/icon38.png"
-        },
-        "default_title": "Just the facts",
-        "default_popup": "popup.html"
+        "default_title": "Just the facts"
     },
     "content_scripts": [
         {
             "css": ["highlight.css"],
-            "matches": ["*://*/*"],
+            "matches": ["*://*/*", "file://*/*"],
             "run_at": "document_end",
             "js": ["lib/jquery-2.0.3.min.js", "highlight.js"]
         }
     ],
+    "icons": {
+        "48": "img/icon48.png",
+        "128": "img/icon128.png"
+    },
     "manifest_version": 2
 }
