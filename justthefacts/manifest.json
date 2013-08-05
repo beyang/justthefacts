@@ -10,6 +10,17 @@
             "matches": [
                 "*://*.nytimes.com/*",
                 "*://*.economist.com/*",
+                "*://*.washingtonpost.com/*",
+                "*://*.wsj.com/*",
+                "*://*.foxnews.com/*",
+                "*://*.cnn.com/*",
+                "*://*.npr.org/*",
+                "*://*.huffingtonpost.com/*",
+                "*://*.theguardian.com/*",
+                "*://*.theguardian.co.uk/*",
+                "*://*.reuters.com/*",
+                "*://*.bbc.com/*",
+                "*://*.bbc.co.uk/*",
                 "file://*/*"
             ],
             "run_at": "document_end",
