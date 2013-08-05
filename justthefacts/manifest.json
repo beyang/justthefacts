@@ -7,7 +7,11 @@
     "content_scripts": [
         {
             "css": ["highlight.css"],
-            "matches": ["*://*/*", "file://*/*"],
+            "matches": [
+                "*://*.nytimes.com/*",
+                "*://*.economist.com/*",
+                "file://*/*"
+            ],
             "run_at": "document_end",
             "js": ["lib/jquery-2.0.3.min.js", "highlight.js"]
         }
