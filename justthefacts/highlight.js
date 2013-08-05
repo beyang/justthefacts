@@ -11,7 +11,7 @@
     }
 
     function markYear(str) {
-        str = markPatternAsClass(str, /([0-9]{4})/g, 'date');
+        str = markPatternAsClass(str, /(?:[0-9]{4})/g, 'date');
         return str;
     }
 
@@ -21,7 +21,7 @@
     }
 
     function markDay(str) {
-        str = markPatternAsClass(str, /Mon(day|\.),?|Tues(day|\.),?|Wed(nesday|\.),?|Thurs(day|\.),?|Fri(day|\.),?|Sat(day|\.),?|Sun(day|\.),?/g, 'date');
+        str = markPatternAsClass(str, /Mon(?:day|\.),?|Tues(?:day|\.),?|Wed(?:nesday|\.),?|Thurs(?:day|\.),?|Fri(?:day|\.),?|Sat(?:day|\.),?|Sun(?:day|\.),?/g, 'date');
         return str;
     }
 
