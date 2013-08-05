@@ -36,8 +36,8 @@
     }
 
     function markAll(str) {
-        str = markNames(str);
         str = markQuotes(str);
+        str = markNames(str);
         str = markYear(str);
         str = markMonthDate(str);
         str = markDay(str);
