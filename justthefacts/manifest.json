@@ -21,6 +21,8 @@
                 "*://*.reuters.com/*",
                 "*://*.bbc.com/*",
                 "*://*.bbc.co.uk/*",
+                "*://*.chicagotribune.com/*",
+                "*://*.techcrunch.com/*",
                 "file://*/*"
             ],
             "run_at": "document_end",
