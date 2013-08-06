@@ -23,6 +23,9 @@
                 "*://*.bbc.co.uk/*",
                 "*://*.chicagotribune.com/*",
                 "*://*.techcrunch.com/*",
+                "*://*.salon.com/*",
+                "*://*.slate.com/*",
+                "*://*.politico.com/*",
                 "file://*/*"
             ],
             "run_at": "document_end",
