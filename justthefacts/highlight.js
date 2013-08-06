@@ -59,5 +59,5 @@
         console.log('highlighting succeeded');
     }
 
-    setTimeout(function() { main(); }, 500);
+    main();
 })();
