@@ -29,7 +29,7 @@
                 "file://*/*"
             ],
             "run_at": "document_end",
-            "js": ["lib/jquery-2.0.3.min.js", "highlight.js"]
+            "js": ["highlight.js"]
         }
     ],
     "icons": {
