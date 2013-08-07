@@ -45,17 +45,18 @@
         return str;
     }
 
-    function replaceTagInnerHTML(tagHTML) {
+    function replaceTagHTML(tagHTML) {
         return tagHTML.replace(/>[^<>]+</g, markAll);
-    }
-
-    function highlightedBody(bodyHTML) {
-        return bodyHTML.replace(/<[Pp][^>]*>[^]+?<\/[Pp]>/g, replaceTagInnerHTML);
     }
 
     function main() {
         console.log('highlighting page...');
-        document.body.innerHTML = highlightedBody(document.body.innerHTML);
+        var pTags = document.getElementsByTagName('p');
+        for (var i = 0; i < pTags.length; ++i) {
+            pTag = pTags[i];
+            console.log(pTag.innerHTML);
+            pTag.outerHTML = replaceTagHTML(pTag.outerHTML);
+        }
         console.log('highlighting succeeded');
     }
 
