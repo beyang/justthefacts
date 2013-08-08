@@ -34,7 +34,7 @@
         // This permits 2-3 character abbreviations such as "Mr." and
         // "Mrs." in the first token, but restricst to single-letter
         // abbreviations (i.e., initials) in subsequent tokens.
-        str = markPatternAsClass(str, /(?:[A-Z](?:\.|[a-zA-Z]{1,2}\.?[a-zA-Z\-]*|))(?:\s[A-Z](?:\.|[a-zA-Z\-]+))+/g, 'name');
+        str = markPatternAsClass(str, /(?:[A-Z](?:\.|[a-zA-Z]{1,2}\.?[a-zA-Z\-]*|))(?:(?:\s(?:of))?(?:\s[A-Z](?:\.|[a-zA-Z\-]+)))+/g, 'name');
 
         str = markPatternAsClass(str, /(?:[A-Z]{4,})/g, 'name');
 
