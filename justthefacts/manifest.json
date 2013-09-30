@@ -12,7 +12,7 @@
   "content_scripts": [
     {
       "css": ["highlight.css"],
-      "matches": ["*://*/*"],
+      "matches": ["*://*/*", "file://*/*"],
       "run_at": "document_end",
       "js": ["highlight.js"]
     }
