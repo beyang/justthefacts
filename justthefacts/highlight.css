@@ -1,24 +1,24 @@
 .justthefacts-quote {
-    font-weight: bold;
-    color: #FF4242; /* red */
+    font-weight: bold !important;
+    color: #FF4242 !important; /* red */
 }
 
 .justthefacts-date {
-   font-weight: bold;
-   color: #4AA12A; /* green */
+   font-weight: bold !important;
+   color: #4AA12A !important; /* green */
 }
 
 .justthefacts-date .justthefacts-number {
-   font-weight: bold;
-   color: #4AA12A; /* green */
+   font-weight: bold !important;
+   color: #4AA12A !important; /* green */
 }
 
 .justthefacts-name {
-   font-weight: bold;
-   color: #7A7AFF; /* blue */
+   font-weight: bold !important;
+   color: #7A7AFF !important; /* blue */
 }
 
 .justthefacts-number {
-   font-weight: bold;
-   color: #B14AFF; /* purple */
+   font-weight: bold !important;
+   color: #B14AFF !important; /* purple */
 }
