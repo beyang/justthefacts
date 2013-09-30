@@ -70,7 +70,8 @@
     var className = 'name';
 
     // All caps
-    str = markPatternAsClass(str, /(?:[A-Z]{4,})/g, className);
+    str = markPatternAsClass(str, /(?:(?:[A-Z]\.){2,})/g, className);
+    str = markPatternAsClass(str, /(?:(?:[A-Z]){3,})/g, className);
 
     // Other names
     Object.keys(nameCounts).sort(function(s1, s2) {
