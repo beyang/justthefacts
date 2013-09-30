@@ -100,21 +100,34 @@
   }
 
   function main() {
-    console.log('highlighting page...');
-    var pTags = document.getElementsByTagName('p');
+    var url = document.location.href;
+    chrome.runtime.sendMessage({'name': 'getSettings'}, function(response) {
+      var domains = response['domains'];
+      var shouldHighlight = false;
+      for (var d = 0; d < domains.length; ++d) {
+        if (url.indexOf(domains[d]) >= 0) {
+          shouldHighlight = true;
+          break;
+        }
+      }
 
-    var src = "";
-    for (var i = 0; i < pTags.length; ++i) {
-      src += pTags[i].outerHTML + "\n\n\n";
-    }
-    nameCounts = computeNameCounts(src);
+      if (shouldHighlight) {
+        console.log('highlighting page...');
+        var pTags = document.getElementsByTagName('p');
 
-    for (var i = 0; i < pTags.length; ++i) {
-      pTag = pTags[i];
-      // console.log(pTag.innerHTML);
-      pTag.outerHTML = replaceTagHTML(pTag.outerHTML, nameCounts);
-    }
-    console.log('highlighting succeeded');
+        var src = "";
+        for (var i = 0; i < pTags.length; ++i) {
+          src += pTags[i].outerHTML + "\n\n\n";
+        }
+        nameCounts = computeNameCounts(src);
+
+        for (var i = 0; i < pTags.length; ++i) {
+          pTag = pTags[i];
+          pTag.outerHTML = replaceTagHTML(pTag.outerHTML, nameCounts);
+        }
+        console.log('highlighting succeeded');
+      }
+    });
   }
 
   main();

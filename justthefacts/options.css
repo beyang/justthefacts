@@ -1,0 +1,20 @@
+.container {
+    width: 70%;
+    margin: 2.5em auto 0 auto;
+}
+
+form {
+    width: 70%;
+    font-size: 20px;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+h1 {
+    font-weight: 100;
+    font-family: Arial;
+}
+
+textarea {
+    width: 100%;
+    font-size: 20px;
+}
