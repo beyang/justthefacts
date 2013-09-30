@@ -1,40 +1,40 @@
 {
-    "name": "Just the facts",
-    "version": "0.0",
-    "page_action": {
-        "default_title": "Just the facts"
-    },
-    "content_scripts": [
-        {
-            "css": ["highlight.css"],
-            "matches": [
-                "*://*.nytimes.com/*",
-                "*://*.economist.com/*",
-                "*://*.washingtonpost.com/*",
-                "*://*.wsj.com/*",
-                "*://*.foxnews.com/*",
-                "*://*.cnn.com/*",
-                "*://*.npr.org/*",
-                "*://*.huffingtonpost.com/*",
-                "*://*.theguardian.com/*",
-                "*://*.theguardian.co.uk/*",
-                "*://*.reuters.com/*",
-                "*://*.bbc.com/*",
-                "*://*.bbc.co.uk/*",
-                "*://*.chicagotribune.com/*",
-                "*://*.techcrunch.com/*",
-                "*://*.salon.com/*",
-                "*://*.slate.com/*",
-                "*://*.politico.com/*",
-                "file://*/*"
-            ],
-            "run_at": "document_end",
-            "js": ["highlight.js"]
-        }
-    ],
-    "icons": {
-        "48": "img/icon48.png",
-        "128": "img/icon128.png"
-    },
-    "manifest_version": 2
+  "name": "Just the facts",
+  "version": "0.0",
+  "page_action": {
+    "default_title": "Just the facts"
+  },
+  "content_scripts": [
+    {
+      "css": ["highlight.css"],
+      "matches": [
+        "*://*.nytimes.com/*",
+        "*://*.economist.com/*",
+        "*://*.washingtonpost.com/*",
+        "*://*.wsj.com/*",
+        "*://*.foxnews.com/*",
+        "*://*.cnn.com/*",
+        "*://*.npr.org/*",
+        "*://*.huffingtonpost.com/*",
+        "*://*.theguardian.com/*",
+        "*://*.theguardian.co.uk/*",
+        "*://*.reuters.com/*",
+        "*://*.bbc.com/*",
+        "*://*.bbc.co.uk/*",
+        "*://*.chicagotribune.com/*",
+        "*://*.techcrunch.com/*",
+        "*://*.salon.com/*",
+        "*://*.slate.com/*",
+        "*://*.politico.com/*",
+        "file://*/*"
+      ],
+      "run_at": "document_end",
+      "js": ["highlight.js"]
+    }
+  ],
+  "icons": {
+    "48": "img/icon48.png",
+    "128": "img/icon128.png"
+  },
+  "manifest_version": 2
 }
