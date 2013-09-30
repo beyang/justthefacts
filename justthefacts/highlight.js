@@ -105,7 +105,7 @@
       var domains = response['domains'];
       var shouldHighlight = false;
       for (var d = 0; d < domains.length; ++d) {
-        if (url.indexOf(domains[d]) >= 0) {
+        if (domains[d].length > 0 && url.indexOf(domains[d]) >= 0) {
           shouldHighlight = true;
           break;
         }
