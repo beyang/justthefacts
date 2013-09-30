@@ -24,10 +24,9 @@
 
   function markMonthDate(str) {
     var className = 'date';
-    str = markPatternAsClass(str, /(?:Jan(?:uary|\.)?|Feb(?:ruary|\.)?|Mar(?:ch|\.)?|Apr(?:il|\.)?|Jun(?:e|\.)?|Jul(?:y|\.)?|Aug(?:ust|\.)?|Sept(?:ember|\.)?|Oct(?:ober|\.)?|Nov(?:ember|\.)?|Dec(?:ember|\.)?)\s?(?:[0-9]{0,2})/g, className);
-    str = str.replace(/May\s?[0-9]{0,2}/g, function (match, offset, str) {
-      if (match === "May") {
-        var nextOffset = offset + "May".length;
+    str = str.replace(/(?:Jan(?:uary|\.)?|Feb(?:ruary|\.)?|Mar(?:ch|\.)?|Apr(?:il|\.)?|May|Jun(?:e|\.)?|Jul(?:y|\.)?|Aug(?:ust|\.)?|Sept(?:ember|\.)?|Oct(?:ober|\.)?|Nov(?:ember|\.)?|Dec(?:ember|\.)?)\s?(?:[0-9]{0,2})/g, function(match, offset, str) {
+      if (match.length === 3 || match === 'Sept') {
+        var nextOffset = offset + match.length;
         if (str.length > nextOffset && isLetter(str[nextOffset])) {
           return match;
         }
