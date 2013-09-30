@@ -1,6 +1,13 @@
 (function() {
+  function isLetter(char) {
+    if (char.length != 1) {
+      return false;
+    }
+    return ('a' <= char  && char <= 'z') || ('A' <= char && char <= 'Z');
+  }
+
   function markPatternAsClass(str, regex, className) {
-    str = str.replace(regex, "<span" + " class='justthefacts-" + className + "'>$&</span>");
+    str = str.replace(regex, "<span class='justthefacts-" + className + "'>$&</span>");
     return str;
   }
 
@@ -16,7 +23,18 @@
   }
 
   function markMonthDate(str) {
-    str = markPatternAsClass(str, /(?:Jan(?:uary|\.)?|Feb(?:ruary|\.)?|Mar(?:ch|\.)?|Apr(?:il|\.)?|May|Jun(?:e|\.)?|Jul(?:y|\.)?|Aug(?:ust|\.)?|Sept(?:ember|\.)?|Oct(?:ober|\.)?|Nov(?:ember|\.)?|Dec(?:ember|\.)?)\s?(?:[0-9]{0,2})/g, 'date');
+    var className = 'date';
+    str = markPatternAsClass(str, /(?:Jan(?:uary|\.)?|Feb(?:ruary|\.)?|Mar(?:ch|\.)?|Apr(?:il|\.)?|Jun(?:e|\.)?|Jul(?:y|\.)?|Aug(?:ust|\.)?|Sept(?:ember|\.)?|Oct(?:ober|\.)?|Nov(?:ember|\.)?|Dec(?:ember|\.)?)\s?(?:[0-9]{0,2})/g, className);
+    str = str.replace(/May\s?[0-9]{0,2}/g, function (match, offset, str) {
+      if (match === "May") {
+        var nextOffset = offset + "May".length;
+        if (str.length > nextOffset && isLetter(str[nextOffset])) {
+          return match;
+        }
+      }
+      return '<span class="justthefacts-' + className + '">' + match + '</span>';
+    });
+
     return str;
   }
 
@@ -61,7 +79,7 @@
     var pTags = document.getElementsByTagName('p');
     for (var i = 0; i < pTags.length; ++i) {
       pTag = pTags[i];
-      console.log(pTag.innerHTML);
+      // console.log(pTag.innerHTML);
       pTag.outerHTML = replaceTagHTML(pTag.outerHTML);
     }
     console.log('highlighting succeeded');
