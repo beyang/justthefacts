@@ -47,7 +47,7 @@
     return str;
   }
 
-  var _commonWords = ['but', 'for', 'on', 'if', 'in', 'to', 'of', 'it', 'be', 'as', 'at', 'so', 'by', 'and', 'that', 'with', 'from', 'both'];
+  var _commonWords = ['but', 'for', 'on', 'if', 'in', 'to', 'of', 'it', 'be', 'as', 'at', 'so', 'by', 'and', 'that', 'with', 'from', 'both', 'when'];
 
   function computeNameCounts(str) {
     var nameCounts = {};
