@@ -47,59 +47,71 @@
     return str;
   }
 
-  var _commonWords = ['but', 'for', 'on', 'if', 'in', 'to', 'of', 'it', 'be', 'as', 'at', 'so', 'by', 'and', 'that', 'with', 'from'];
+  var _commonWords = ['but', 'for', 'on', 'if', 'in', 'to', 'of', 'it', 'be', 'as', 'at', 'so', 'by', 'and', 'that', 'with', 'from', 'both'];
 
-  function markNames(str) {
-    var className = 'name';
-
-    // All caps
-    str = markPatternAsClass(str, /(?:[A-Z]{4,})/g, className);
-
+  function computeNameCounts(str) {
+    var nameCounts = {};
     // This permits 2-3 character abbreviations such as "Mr." and
     // "Mrs." in the first token, but restricst to single-letter
     // abbreviations (i.e., initials) in subsequent tokens.
     var nameCandidates = str.match(/(?:[A-Z](?:\.|[a-zA-Z]{1,2}\.?[a-zA-Z\-']*|))(?:(?:\s(?:of|in))?(?:\s[A-Z](?:\.|[a-zA-Z\-']+)))+/g);
     if (nameCandidates) {
-      var nameCounts = {};
       nameCandidates.forEach(function(candidate) {
         if (nameCounts[candidate] === undefined) {
           nameCounts[candidate] = 0;
         }
         nameCounts[candidate]++;
       });
-      Object.keys(nameCounts).forEach(function(candidate) {
-        if (nameCounts[candidate] > 0) {
-          if (_commonWords.indexOf(candidate.split(' ')[0].toLowerCase()) < 0) {
-            str = str.replace(candidate, "<span class='justthefacts-" + className + "'>" + candidate + "</span>");
-          }
-        }
-      });
     }
+    return nameCounts;
+  }
+
+  function markNames(str, nameCounts) {
+    var className = 'name';
+
+    // All caps
+    str = markPatternAsClass(str, /(?:[A-Z]{4,})/g, className);
+
+    // Other names
+    Object.keys(nameCounts).sort(function(s1, s2) {
+      return s2.length - s1.length;
+    }).forEach(function(candidate) {
+      if (nameCounts[candidate] > 0) {
+        if (_commonWords.indexOf(candidate.split(' ')[0].toLowerCase()) < 0) {
+          str = str.replace(candidate, "<span class='justthefacts-" + className + "'>" + candidate + "</span>");
+        }
+      }
+    });
 
     return str;
   }
 
-  function markAll(str) {
-    str = markQuotes(str);
-    str = markNames(str);
-    str = markYear(str);
-    str = markMonthDate(str);
-    str = markDay(str);
-    str = markNumbers(str);
-    return str;
-  }
-
-  function replaceTagHTML(tagHTML) {
-    return tagHTML.replace(/>[^<>]+</g, markAll);
+  function replaceTagHTML(tagHTML, nameCounts) {
+    return tagHTML.replace(/>[^<>]+</g, function(str) {
+      str = markQuotes(str);
+      str = markNames(str, nameCounts);
+      str = markYear(str);
+      str = markMonthDate(str);
+      str = markDay(str);
+      str = markNumbers(str);
+      return str;
+    });
   }
 
   function main() {
     console.log('highlighting page...');
     var pTags = document.getElementsByTagName('p');
+
+    var src = "";
+    for (var i = 0; i < pTags.length; ++i) {
+      src += pTags[i].outerHTML + "\n\n\n";
+    }
+    nameCounts = computeNameCounts(src);
+
     for (var i = 0; i < pTags.length; ++i) {
       pTag = pTags[i];
       // console.log(pTag.innerHTML);
-      pTag.outerHTML = replaceTagHTML(pTag.outerHTML);
+      pTag.outerHTML = replaceTagHTML(pTag.outerHTML, nameCounts);
     }
     console.log('highlighting succeeded');
   }
