@@ -1,24 +1,24 @@
 .justthefacts-quote {
     font-weight: bold;
-    color: red;
+    color: #FF4242; /* red */
 }
 
 .justthefacts-date {
    font-weight: bold;
-   color: green;
+   color: #4AA12A; /* green */
 }
 
 .justthefacts-date .justthefacts-number {
    font-weight: bold;
-   color: green;
+   color: #4AA12A; /* green */
 }
 
 .justthefacts-name {
    font-weight: bold;
-   color: blue;
+   color: #7A7AFF; /* blue */
 }
 
 .justthefacts-number {
    font-weight: bold;
-   color: purple;
+   color: #B14AFF; /* purple */
 }
