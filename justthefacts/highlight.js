@@ -48,15 +48,35 @@
     return str;
   }
 
+  var _commonWords = ['but', 'for', 'on', 'if', 'in', 'to', 'of', 'it', 'be', 'as', 'at', 'so', 'by', 'and', 'that', 'with', 'from'];
+
   function markNames(str) {
+    var className = 'name';
+
+    // All caps
+    str = markPatternAsClass(str, /(?:[A-Z]{4,})/g, className);
+
     // This permits 2-3 character abbreviations such as "Mr." and
     // "Mrs." in the first token, but restricst to single-letter
     // abbreviations (i.e., initials) in subsequent tokens.
-    str = markPatternAsClass(str, /(?:[A-Z](?:\.|[a-zA-Z]{1,2}\.?[a-zA-Z\-']*|))(?:(?:\s(?:of|in))?(?:\s[A-Z](?:\.|[a-zA-Z\-']+)))+/g, 'name');
+    var nameCandidates = str.match(/(?:[A-Z](?:\.|[a-zA-Z]{1,2}\.?[a-zA-Z\-']*|))(?:(?:\s(?:of|in))?(?:\s[A-Z](?:\.|[a-zA-Z\-']+)))+/g);
+    if (nameCandidates) {
+      var nameCounts = {};
+      nameCandidates.forEach(function(candidate) {
+        if (nameCounts[candidate] === undefined) {
+          nameCounts[candidate] = 0;
+        }
+        nameCounts[candidate]++;
+      });
+      Object.keys(nameCounts).forEach(function(candidate) {
+        if (nameCounts[candidate] > 0) {
+          if (_commonWords.indexOf(candidate.split(' ')[0].toLowerCase()) < 0) {
+            str = str.replace(candidate, "<span class='justthefacts-" + className + "'>" + candidate + "</span>");
+          }
+        }
+      });
+    }
 
-    str = markPatternAsClass(str, /(?:[A-Z]{4,})/g, 'name');
-
-    // TODO: capitalize tokens that occur more than X times
     return str;
   }
 
